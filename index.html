@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Techyto - Automation & Digital Solutions</title>
+    <meta name="description" content="Techyto provides cutting-edge digital solutions and automation tools to help businesses save time and scale faster.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables */
+        :root {
+            --bg-color: #FFFFFF;
+            --bg-light: #F8FAFC;
+            --text-primary: #1F2937;
+            --text-neutral: #6B7280;
+            --accent-primary: #3B82F6;
+            --accent-primary-hover: #2563EB;
+            --accent-secondary: #10B981;
+            --accent-secondary-hover: #059669;
+            --border-color: #E5E7EB;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+        }
+
+        /* Resets & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-primary);
+            background-color: var(--bg-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        p {
+            color: var(--text-neutral);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Container */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background-color: var(--accent-primary);
+            color: #FFFFFF;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-primary-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text-primary);
+            background-color: var(--bg-light);
+        }
+
+        .btn-green {
+            background-color: var(--accent-secondary);
+            color: #FFFFFF;
+        }
+
+        .btn-green:hover {
+            background-color: var(--accent-secondary-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* General Section Styling */
+        .section {
+            padding: 96px 0;
+        }
+
+        .section-light {
+            background-color: var(--bg-light);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 64px auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+        }
+
+        /* --- Navbar --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 16px 0;
+            transition: var(--transition);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-link {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .nav-link:hover {
+            color: var(--accent-primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-menu-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--text-primary);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            padding: 160px 0 100px 0;
+            background: linear-gradient(135deg, var(--bg-light) 0%, #FFFFFF 100%);
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            letter-spacing: -0.02em;
+            margin-bottom: 24px;
+        }
+
+        .hero-title span {
+            color: var(--accent-primary);
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 40px;
+            padding: 0 20px;
+        }
+
+        .hero-cta {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* --- Problem Section --- */
+        .problem-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        .problem-image {
+            background-color: #E2E8F0;
+            border-radius: 16px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-neutral);
+            font-size: 1.2rem;
+            background-image: url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=800&h=600');
+            background-size: cover;
+            background-position: center;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .problem-content h2 {
+            font-size: 2.25rem;
+            margin-bottom: 24px;
+        }
+
+        .problem-list {
+            margin-top: 32px;
+        }
+
+        .problem-list li {
+            position: relative;
+            padding-left: 32px;
+            margin-bottom: 16px;
+            font-size: 1.125rem;
+            color: var(--text-primary);
+        }
+
+        .problem-list li::before {
+            content: '×';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #EF4444; /* Red color for problem */
+            font-size: 1.5rem;
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        /* --- Solution Section --- */
+        .solution-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        .solution-content h2 {
+            font-size: 2.25rem;
+            margin-bottom: 24px;
+        }
+
+        .solution-list {
+            margin-top: 32px;
+        }
+
+        .solution-list li {
+            position: relative;
+            padding-left: 36px;
+            margin-bottom: 20px;
+            font-size: 1.125rem;
+            font-weight: 500;
+        }
+
+        .solution-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--accent-secondary);
+            font-size: 1.25rem;
+            font-weight: bold;
+            background: #D1FAE5;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+
+        .solution-image {
+            background-color: #E2E8F0;
+            border-radius: 16px;
+            height: 400px;
+            background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800&h=600');
+            background-size: cover;
+            background-position: center;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .order-1 { order: 1; }
+        .order-2 { order: 2; }
+
+        /* --- How It Works --- */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .step-card {
+            background: #FFFFFF;
+            padding: 40px 32px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            text-align: center;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .step-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background-color: var(--accent-primary);
+            color: #FFFFFF;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0 auto 24px auto;
+        }
+
+        .step-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+
+        /* --- Features Section --- */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .feature-card {
+            padding: 32px;
+            background: #FFFFFF;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent-primary);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background-color: rgba(59, 130, 246, 0.1);
+            color: var(--accent-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .feature-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+
+        /* --- Testimonials --- */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .testimonial-card {
+            background: #FFFFFF;
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .stars {
+            color: #FBBF24;
+            margin-bottom: 16px;
+            font-size: 1.25rem;
+        }
+
+        .testimonial-text {
+            font-size: 1.05rem;
+            font-style: italic;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .author-img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: #E2E8F0;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .author-info p {
+            font-size: 0.875rem;
+            margin: 0;
+        }
+
+        /* --- Pricing Section --- */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            align-items: center;
+        }
+
+        .pricing-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 40px 32px;
+            text-align: center;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .pricing-card:hover {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .pricing-card.popular {
+            border: 2px solid var(--accent-primary);
+            box-shadow: var(--shadow-lg);
+            transform: scale(1.05);
+            background-color: #FFFFFF;
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--accent-primary);
+            color: #FFFFFF;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        .plan-price {
+            font-size: 3rem;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .plan-price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text-neutral);
+        }
+
+        .plan-desc {
+            margin-bottom: 32px;
+            font-size: 0.95rem;
+        }
+
+        .plan-features {
+            text-align: left;
+            margin-bottom: 32px;
+        }
+
+        .plan-features li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+        }
+
+        .plan-features li svg {
+            width: 20px;
+            height: 20px;
+            color: var(--accent-secondary);
+            flex-shrink: 0;
+        }
+
+        /* --- CTA Fill Section --- */
+        .cta-section {
+            background-color: var(--text-primary);
+            color: #FFFFFF;
+            text-align: center;
+            padding: 80px 0;
+            border-radius: 24px;
+            margin: 64px 24px;
+            background-image: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, transparent 100%);
+        }
+
+        .cta-section h2 {
+            color: #FFFFFF;
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .cta-section p {
+            color: #D1D5DB;
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto 32px auto;
+        }
+
+        /* --- Request Demo Form Section --- */
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #FFFFFF;
+            padding: 48px;
+            border-radius: 24px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: var(--bg-light);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            background-color: #FFFFFF;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 16px;
+            font-size: 1.125rem;
+        }
+
+        /* --- Success Modal --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: #FFFFFF;
+            padding: 48px;
+            border-radius: 24px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            transform: translateY(20px);
+            transition: var(--transition);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-icon {
+            width: 80px;
+            height: 80px;
+            background-color: #D1FAE5;
+            color: var(--accent-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px auto;
+        }
+
+        .modal-icon svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        .modal-content h3 {
+            font-size: 1.75rem;
+            margin-bottom: 16px;
+        }
+
+        .modal-content p {
+            margin-bottom: 32px;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: var(--text-primary);
+            color: #FFFFFF;
+            padding: 80px 0 32px 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 64px;
+        }
+
+        .footer-logo {
+            color: #FFFFFF;
+            margin-bottom: 16px;
+        }
+
+        .footer-logo span {
+            color: var(--accent-primary);
+        }
+
+        .footer-text {
+            color: #9CA3AF;
+            margin-bottom: 24px;
+            max-width: 300px;
+        }
+
+        .footer-links h4 {
+            font-size: 1.125rem;
+            margin-bottom: 24px;
+            font-family: inherit;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links ul li a {
+            color: #9CA3AF;
+        }
+
+        .footer-links ul li a:hover {
+            color: #FFFFFF;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #9CA3AF;
+            font-size: 0.875rem;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            .hero-title { font-size: 3rem; }
+            .steps-grid, .features-grid, .testimonials-grid, .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .pricing-card.popular {
+                transform: none;
+            }
+            .problem-wrapper, .solution-wrapper {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .order-1 { order: 2; }
+            .order-2 { order: 1; }
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: #FFFFFF;
+                flex-direction: column;
+                padding: 24px 0;
+                box-shadow: var(--shadow-md);
+                border-top: 1px solid var(--border-color);
+                clip-path: circle(0% at 50% -20%);
+                transition: clip-path 0.4s ease-out;
+            }
+            .nav-links.show {
+                clip-path: circle(150% at 50% -20%);
+            }
+            .mobile-menu-btn { display: block; }
+            
+            .hero { padding: 120px 0 60px 0; }
+            .hero-title { font-size: 2.5rem; }
+            
+            .steps-grid, .features-grid, .testimonials-grid, .pricing-grid, .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section { padding: 64px 0; }
+            .cta-section { margin: 32px 0; padding: 48px 24px; border-radius: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="#" class="logo">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 17L12 22L22 17" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 12L12 17L22 12" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Techy<span>to</span>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <svg viewBox="0 0 24 24">
+                    <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+
+            <div class="nav-links" id="navLinks">
+                <a href="#how-it-works" class="nav-link">How it Works</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+                <a href="#demo" class="btn btn-primary nav-demo-btn">Request Demo</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Automate your workflow, <span>scale faster</span></h1>
+                <p class="hero-subtitle">Techyto provides powerful digital solutions and automated tools to help modern teams save up to 20 hours per week doing manual tasks.</p>
+                <div class="hero-cta">
+                    <a href="#demo" class="btn btn-primary">Request a Demo</a>
+                    <a href="#features" class="btn btn-secondary">View Features</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="section">
+        <div class="container">
+            <div class="problem-wrapper">
+                <div class="problem-content order-1">
+                    <h2>Stop wasting time on manual, repetitive tasks</h2>
+                    <p>Growing a business is hard enough. You shouldn't be bogged down by outdated processes, messy spreadsheets, and disconnected tools that slow you down.</p>
+                    <ul class="problem-list">
+                        <li>Losing track of important client data</li>
+                        <li>Spending hours on manual reporting</li>
+                        <li>Missed opportunities due to slow follow-ups</li>
+                        <li>High human error rate in daily operations</li>
+                    </ul>
+                </div>
+                <div class="problem-image order-2">
+                    <!-- Placeholder filled with background image via CSS -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="solution-wrapper">
+                <div class="solution-image order-1"></div>
+                <div class="solution-content order-2">
+                    <h2>Everything works seamlessly together</h2>
+                    <p>Techyto centralizes your digital operations into one intuitive platform. Automate your busywork and focus on what actually matters: growing your revenue.</p>
+                    <ul class="solution-list">
+                        <li>Automated data syncing across all tools</li>
+                        <li>One-click insightful reporting dashboards</li>
+                        <li>Instant automated personalized follow-ups</li>
+                        <li>99.9% error reduction in data handling</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="section" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">How Techyto Works</h2>
+                <p class="section-subtitle">Get your entire team onboarded and automating tasks in three simple steps.</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Connect Your Tools</h3>
+                    <p>Integrate securely with over 100+ platforms you already use including Slack, CRM, and Email.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Build Visual Workflows</h3>
+                    <p>Use our drag-and-drop builder to create powerful automations without writing a single line of code.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Launch & Scale</h3>
+                    <p>Activate your workflows and watch your team's productivity multiply overnight.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section section-light" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Powerful features to drive growth</h2>
+                <p class="section-subtitle">Everything you need to automate your business, wrapped in a beautiful, easy-to-use interface.</p>
+            </div>
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+                    </div>
+                    <h3>Lightning Fast</h3>
+                    <p>Built on a modern tech stack ensuring your automations run instantly with zero latency.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    </div>
+                    <h3>Bank-grade Security</h3>
+                    <p>Your data is encrypted at rest and in transit. We comply with GDPR and SOC2 standards.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    </div>
+                    <h3>Real-time Analytics</h3>
+                    <p>Track the performance of your workflows and calculate hours saved in real-time.</p>
+                </div>
+                <!-- Feature 4 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    </div>
+                    <h3>Global Availability</h3>
+                    <p>Deployed across multi-region servers ensuring 99.99% uptime for your critical operations.</p>
+                </div>
+                <!-- Feature 5 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    </div>
+                    <h3>Team Collaboration</h3>
+                    <p>Invite your entire team, set granular permissions, and collaborate on complex workflows.</p>
+                </div>
+                <!-- Feature 6 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                    </div>
+                    <h3>24/7 Premium Support</h3>
+                    <p>Our automation experts are available round the clock to help you build and troubleshoot.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Trusted by fast-growing teams</h2>
+                <p class="section-subtitle">See how companies use Techyto to save time and increase revenue.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Techyto completely transformed how our sales team operates. We save roughly 25 hours a week on manual data entry!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://ui-avatars.com/api/?name=Sarah+Jenkins&background=random" alt="Sarah" class="author-img">
+                        <div class="author-info">
+                            <h4>Sarah Jenkins</h4>
+                            <p>VP of Sales, Acme Corp</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"The visual workflow builder is incredibly intuitive. I set up our entire marketing onboarding sequence in under an hour."</p>
+                    <div class="testimonial-author">
+                        <img src="https://ui-avatars.com/api/?name=David+Chen&background=random" alt="David" class="author-img">
+                        <div class="author-info">
+                            <h4>David Chen</h4>
+                            <p>Marketing Director, GrowthIO</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Outstanding product. The ROI was immediately obvious after our first month using their automated reporting tools."</p>
+                    <div class="testimonial-author">
+                        <img src="https://ui-avatars.com/api/?name=Elena+Rodriguez&background=random" alt="Elena" class="author-img">
+                        <div class="author-info">
+                            <h4>Elena Rodriguez</h4>
+                            <p>Operations Lead, TechSolutions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section section-light" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Simple, transparent pricing</h2>
+                <p class="section-subtitle">No hidden fees. Start for free and scale as your team grows.</p>
+            </div>
+            <div class="pricing-grid">
+                <!-- Starter Plan -->
+                <div class="pricing-card">
+                    <h3 class="plan-name">Starter</h3>
+                    <div class="plan-price">$29<span>/mo</span></div>
+                    <p class="plan-desc">Perfect for small teams getting started with automation.</p>
+                    <ul class="plan-features">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Up to 5 users</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> 1,000 automations/mo</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Standard integrations</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Email support</li>
+                    </ul>
+                    <button class="btn btn-secondary" style="width: 100%;">Start Free Trial</button>
+                </div>
+                
+                <!-- Pro Plan -->
+                <div class="pricing-card popular">
+                    <div class="popular-badge">Most Popular</div>
+                    <h3 class="plan-name">Professional</h3>
+                    <div class="plan-price">$99<span>/mo</span></div>
+                    <p class="plan-desc">Everything you need to automate your entire business.</p>
+                    <ul class="plan-features">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Up to 20 users</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> 10,000 automations/mo</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Premium integrations</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Priority 24/7 support</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Advanced analytics</li>
+                    </ul>
+                    <a href="#demo" class="btn btn-primary" style="width: 100%; display:block;">Request Demo</a>
+                </div>
+
+                <!-- Enterprise Plan -->
+                <div class="pricing-card">
+                    <h3 class="plan-name">Enterprise</h3>
+                    <div class="plan-price">$299<span>/mo</span></div>
+                    <p class="plan-desc">Advanced security and custom tools for large organizations.</p>
+                    <ul class="plan-features">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Unlimited users</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Unlimited automations</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Custom integrations</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Dedicated account manager</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> SSO & SOC2 Reports</li>
+                    </ul>
+                    <button class="btn btn-secondary" style="width: 100%;">Contact Sales</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom CTA Fill -->
+    <div class="container">
+        <div class="cta-section">
+            <h2>Ready to transform your workflow?</h2>
+            <p>Join over 4,000+ companies saving time and growing their business with automated solutions.</p>
+            <a href="#demo" class="btn btn-green">Get Started Today</a>
+        </div>
+    </div>
+
+    <!-- Request Demo Form Section -->
+    <section class="section" id="demo">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Request a Live Demo</h2>
+                <p class="section-subtitle">See Techyto in action. Fill out the form below and our team will get back to you within 24 hours.</p>
+            </div>
+            
+            <div class="form-container">
+                <form id="demoForm">
+                    <div class="form-group">
+                        <label class="form-label" for="fullName">Full Name</label>
+                        <input type="text" id="fullName" class="form-control" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="companyName">Company Name</label>
+                        <input type="text" id="companyName" class="form-control" placeholder="Acme Inc." required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="workEmail">Work Email</label>
+                        <input type="email" id="workEmail" class="form-control" placeholder="john@acme.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="message">How can we help you?</label>
+                        <textarea id="message" class="form-control" placeholder="Tell us about the processes you'd like to automate..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary form-submit">Submit Request</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal-content">
+            <div class="modal-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            </div>
+            <h3>Request Received!</h3>
+            <p>Thank you for your interest in Techyto. One of our automation experts will review your request and contact you shortly.</p>
+            <button class="btn btn-primary" id="closeModalBtn" style="width: 100%;">Got it, thanks!</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo footer-logo">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 17L12 22L22 17" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 12L12 17L22 12" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        Techy<span>to</span>
+                    </a>
+                    <p class="footer-text">Empowering modern teams to do more with less through intelligent automation and unified digital solutions.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Integrations</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Changelog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Security</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Techyto Inc. All rights reserved. A university assignment prototype.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.getElementById('navLinks');
+            const navItems = document.querySelectorAll('.nav-link, .nav-demo-btn');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('show');
+            });
+
+            // Close mobile menu when clicking a link
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    if(navLinks.classList.contains('show')) {
+                        navLinks.classList.remove('show');
+                    }
+                });
+            });
+
+            // Navbar shadow on scroll
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 20) {
+                    navbar.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.05)';
+                    navbar.style.padding = '12px 0';
+                } else {
+                    navbar.style.boxShadow = 'none';
+                    navbar.style.padding = '16px 0';
+                }
+            });
+
+            // Form Submission & Validation
+            const demoForm = document.getElementById('demoForm');
+            const successModal = document.getElementById('successModal');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+
+            demoForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Basic validation is handled by HTML5 'required' attributes
+                // Show success modal
+                successModal.classList.add('active');
+                
+                // Clear form
+                demoForm.reset();
+            });
+
+            // Close Modal
+            closeModalBtn.addEventListener('click', () => {
+                successModal.classList.remove('active');
+            });
+
+            // Close Modal on outside click
+            successModal.addEventListener('click', (e) => {
+                if (e.target === successModal) {
+                    successModal.classList.remove('active');
+                }
+            });
+            
+            // Smooth Scroll logic handling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        e.preventDefault();
+                        const headerOffset = 80;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                  
+                        window.scrollTo({
+                             top: offsetPosition,
+                             behavior: "smooth"
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
